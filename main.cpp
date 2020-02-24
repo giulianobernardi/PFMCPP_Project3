@@ -396,7 +396,6 @@ struct Train
     void printCarriages()
     {
         for (std::size_t i = 0; i < static_cast<size_t>(this->numCarriages); i++) 
-        // FIXME use std::size_t instead of int when dealing with std::vector indexing
         {
             std::cout << 
             "Carriage " << i+1 << ": " << this->carriages[i].numPassengers <<
@@ -584,9 +583,7 @@ struct Backpack
     
     void print()
     {
-        // FIXME use books.size() to get the number of books.  don't make a member variable store the size, as you might not keep it in sync with the actual vector holding all of your books.
         for (std::size_t i = 0; i < this->books.size(); i++) 
-        // FIXME use std::size_t instead of int when dealing with std::vector indexing
         {
             std::cout << "Book " << i+1 << ": " << this->books[i].title << ", pages " << this->books[i].pages << std::endl;
         }
@@ -596,7 +593,6 @@ struct Backpack
 
 Backpack::Backpack()
 {
-    // FIXME use std::vector<string>, not a raw C-style array. 
     std::vector<std::string> subjects { "Math", "English", 
         "Physics", "Economy", "Chemistry" };
 
@@ -606,7 +602,6 @@ Backpack::Backpack()
         size_t subjInd = rand() % 5;
         Book myBook(subjects[subjInd], numPages);
         this->books.push_back(myBook);
-        // std::cout << "Book " << i+1 << ": " << this->books[i].title << ", pages " << this->books[i].pages << std::endl;
     }
 
     print();
