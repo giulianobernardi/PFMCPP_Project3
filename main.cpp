@@ -200,7 +200,7 @@ struct Watch
     struct Wristband
     {
         bool isLeather = true;
-        int color = 25; // we don't know vectors so I'm supposing a unidimensional color scale :P
+        int color = 25;
     };
     
     void reset(bool toReset);
@@ -265,7 +265,7 @@ struct Window
     struct Knob
     {
         bool isSteel = true;
-        int color = 5; // we don't know vectors so I'm supposing a unidimensional color scale :P
+        int color = 5;
     };
     
     void cleanWindow(bool toClean);
