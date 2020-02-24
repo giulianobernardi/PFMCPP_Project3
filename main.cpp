@@ -395,7 +395,8 @@ struct Train
 
     void printCarriages()
     {
-        for (int i = 0; i < this->numCarriages; i++) FIXME use std::size_t instead of int when dealing with std::vector indexing
+        for (std::size_t i = 0; i < static_cast<size_t>(this->numCarriages); i++) 
+        // FIXME use std::size_t instead of int when dealing with std::vector indexing
         {
             std::cout << 
             "Carriage " << i+1 << ": " << this->carriages[i].numPassengers <<
@@ -583,8 +584,9 @@ struct Backpack
     
     void print()
     {
-        FIXME use books.size() to get the number of books.  don't make a member variable store the size, as you might not keep it in sync with the actual vector holding all of your books.
-        for (int i = 0; i < this->numBooks; i++) FIXME use std::size_t instead of int when dealing with std::vector indexing
+        // FIXME use books.size() to get the number of books.  don't make a member variable store the size, as you might not keep it in sync with the actual vector holding all of your books.
+        for (std::size_t i = 0; i < this->books.size(); i++) 
+        // FIXME use std::size_t instead of int when dealing with std::vector indexing
         {
             std::cout << "Book " << i+1 << ": " << this->books[i].title << ", pages " << this->books[i].pages << std::endl;
         }
@@ -594,14 +596,14 @@ struct Backpack
 
 Backpack::Backpack()
 {
-    FIXME use std::vector<string>, not a raw C-style array. 
-    std::string subjects[5] = { "Math", "English", 
-                        "Physics", "Economy", "Chemistry" };
+    // FIXME use std::vector<string>, not a raw C-style array. 
+    std::vector<std::string> subjects { "Math", "English", 
+        "Physics", "Economy", "Chemistry" };
 
     for (int i = 0; i < this->numBooks; i++)
     {
         int numPages = rand() % 500 + 1;
-        int subjInd = rand() % 5;
+        size_t subjInd = rand() % 5;
         Book myBook(subjects[subjInd], numPages);
         this->books.push_back(myBook);
         // std::cout << "Book " << i+1 << ": " << this->books[i].title << ", pages " << this->books[i].pages << std::endl;
@@ -692,7 +694,7 @@ int main()
 
     std::cout << "The current window has the following properties: " << std::endl;
     Window window(3.0f,2.0f,1.5f);
-    srand(unsigned(time(NULL)));
+    srand(unsigned(time(nullptr)));
     std::cout << "---- LET'S HAMMER THE WINDOW ---" << std::endl;
     window.hammerWindow(3);
     std::cout << "----------------------\n" << std::endl; 
