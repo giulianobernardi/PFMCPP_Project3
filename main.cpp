@@ -74,6 +74,11 @@ int main()
 //call Example::main() in main()
 
 
+// UDT storing rgba color
+struct Color {
+    Color (float r_, float g_, float b_, float a_) : r(r_), g(g_), b(b_), a(a_) {}
+    float r, g, b, a;
+};
 
 /*
  1)
@@ -200,7 +205,7 @@ struct Watch
     struct Wristband
     {
         bool isLeather = true;
-        int color = 25;
+        Color color{0.5f,0.5f,0.0f,1.f};
     };
     
     void reset(bool toReset);
@@ -265,7 +270,7 @@ struct Window
     struct Knob
     {
         bool isSteel = true;
-        int color = 5;
+        Color color{0.5f,0.5f,0.5f,1.0f};
     };
     
     void cleanWindow(bool toClean);
@@ -479,13 +484,13 @@ struct Shoe
     struct Lace
     {
         float length = 2; // in [m]
-        int color = 25;
+        Color color{0.0f,1.0f,0.0f,1.f};
         bool isTied = false;
     };
     
     struct Logo
     {
-        int color = 25;
+        Color color{1.0f,1.0f,1.0f,1.f};
         int logoIndex = 2; // assuming a preexisting vector including all the logos
     };
 
@@ -524,7 +529,7 @@ struct Egg
     struct Shell
     {
         bool isCracked = false;
-        int color = 2;
+        Color color{0.5f,0.5f,0.0f,1.f};
     };
     
     void crackShell();
